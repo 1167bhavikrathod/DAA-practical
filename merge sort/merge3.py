@@ -1,9 +1,11 @@
-"""1. Write a program to sort an array of 10 integers
-using Merge Sort in python"""
+"""Demonstrate Merge Sort on an array of 15 floating-
+point numbers and display the number of
+comparisons made."""
 
+# Global counter for comparisons
+comparisons = 0
 
 def merge_sort(arr):
-    global count
     if len(arr) <= 1:
         return arr
     
@@ -13,17 +15,16 @@ def merge_sort(arr):
     right = merge_sort(arr[mid:])
     
     # Merge the sorted halves
-    merged = merge(left, right)
-    print("step" , count ,":" ,list(merged),end='\n')
-    count += 1
-    return merged
+    return merge(left, right)
 
 def merge(left, right):
+    global comparisons
     result = []
     i = j = 0
     
     # Compare elements from both arrays and merge in sorted order
     while i < len(left) and j < len(right):
+        comparisons += 1  # Increment counter for each comparison
         if left[i] <= right[j]:
             result.append(left[i])
             i += 1
@@ -37,10 +38,11 @@ def merge(left, right):
     result.extend(right[j:])
     return result
 
-# Example usage with an array of 10 integers
+# Example usage with an array of 15 floating-point numbers
 if __name__ == "__main__":
-    count = 1
-    arr = [64, 34, 25, 12, 22, 11, 90, 45, 78, 56]
+    arr = [23.5, 12.8, 45.3, 9.1, 67.4, 33.2, 15.7, 88.6, 27.9, 51.3, 4.2, 76.5, 19.8, 62.1, 37.0]
     print("Original array:", arr)
+    comparisons = 0  # Reset comparisons before sorting
     sorted_arr = merge_sort(arr)
     print("Sorted array:", sorted_arr)
+    print("Number of comparisons:", comparisons)

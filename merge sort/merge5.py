@@ -1,6 +1,5 @@
-"""1. Write a program to sort an array of 10 integers
-using Merge Sort in python"""
-
+"""Implement Merge Sort and display the array after
+each merge step."""
 
 def merge_sort(arr):
     global count
