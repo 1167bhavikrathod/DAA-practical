@@ -1,37 +1,39 @@
-
-def merge_sort(arr):
-
+def mergesort(arr):
+    global count
     if len(arr)<=1:
         return arr
-
+    
+    #divide array into two sub arrays
     mid = len(arr) // 2
-    left = merge_sort(arr[:mid])
-    right = merge_sort(arr[mid:])
+    left = mergesort(arr[:mid])
+    right = mergesort(arr[mid:])
 
-    return merge(left,right)
+    merged_array = merge(left,right)
+    print("step" , count , ":",list(merged_array),end='\n')
+    count+=1
+    return merged_array
+
+
 
 def merge(left,right):
     result = []
-    i = j = 0
+    i=j=0
 
-    while i<len(left) and j< len(right):
+    while i < len(left) and j < len(right):
         if left[i] <= right[j]:
             result.append(left[i])
             i+=1
         else:
             result.append(right[j])
             j+=1
-
+    
     result.extend(left[i:])
     result.extend(right[j:])
     return result
 
-# arr = [64, 34, 25, 12, 22, 11, 90, 45, 78, 56]
-# print("original array: ", arr)
-# sorted_arr = merge_sort(arr)
-# print("sorted array: ", sorted_arr)
-
-# students = ["Emma", "Liam", "Olivia", "Noah", "Ava", "Sophia", "Jackson", "Isabella", "Lucas", "Mia"]
-# print("Original list of students:", students)
-# sorted_students = merge_sort(students)
-# print("Sorted list of students:", sorted_students)
+if __name__ == "__main__":
+    count = 1
+    arr = [0,9,8,7,6,5,4,3,2,1]
+    print("original array:",arr,end = '\n')
+    sorted = mergesort(arr)
+    print("sorted array:",sorted)

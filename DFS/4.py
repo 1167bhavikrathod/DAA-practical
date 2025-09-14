@@ -20,6 +20,7 @@ graph = {
     'e' : ['b']
     # 'f' : []
 }
+
 dfs(graph,'a')
 
 if(len(graph) != count):

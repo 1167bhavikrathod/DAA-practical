@@ -21,7 +21,7 @@ def merge(left, right):
     
     # Compare employee records by Salary and merge in ascending order
     while i < len(left) and j < len(right):
-        if left[i][2] <= right[j][2]:  # Compare Salary (index 2 of tuple)
+        if left[i][2] >= right[j][2]:  # Compare Salary (index 2 of tuple)
             result.append(left[i])
             i += 1
         else:
